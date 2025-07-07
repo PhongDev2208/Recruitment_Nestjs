@@ -52,7 +52,7 @@ export class RolesService {
       const offset = (currentPage - 1) * limit;
       const defaultLimit = limit ? limit : 10;
 
-      const totalItems = await this.roleModel.count(filter);
+      const totalItems = (await this.roleModel.find(filter)).length;
       const totalPages = Math.ceil(totalItems / defaultLimit);
 
       const result = await this.roleModel

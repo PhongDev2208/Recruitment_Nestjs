@@ -51,7 +51,7 @@ export class SubscribersService {
       const offset = (currentPage - 1) * limit;
       const defaultLimit = limit ? limit : 10;
 
-      const totalItems = await this.subscriberModel.count(filter);
+      const totalItems = (await this.subscriberModel.find(filter)).length;
       const totalPages = Math.ceil(totalItems / defaultLimit);
 
       const result = await this.subscriberModel

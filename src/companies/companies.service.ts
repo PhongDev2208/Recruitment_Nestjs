@@ -43,7 +43,7 @@ export class CompaniesService {
       const offset = (currentPage - 1) * limit;
       const defaultLimit = limit ? limit : 10;
 
-      const totalItems = await this.companyModel.count(filter);
+      const totalItems = (await this.companyModel.find(filter)).length;
       const totalPages = Math.ceil(totalItems / defaultLimit);
 
       const result = await this.companyModel
